@@ -1,0 +1,39 @@
+scalar DateTime
+
+type Query {
+  user(where: WhereUniqueInput!): User
+  shop(where: WhereUniqueInput!): Shop
+}
+
+
+type Shop {
+  id: String!
+
+  name: String!
+  email: String
+  address: String
+  users: [User!]!
+
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type User {
+  id: ID!
+
+  email: String!
+  role: UserRole!
+
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+input WhereUniqueInput {
+  id: ID!
+}
